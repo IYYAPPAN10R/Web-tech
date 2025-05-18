@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodExpress - Bootstrap Grid</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .food-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .food-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">FoodExpress</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Our Menu</h2>
+        
+        <!-- Featured Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="food-card">
+                    <h3>Today's Special</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500" alt="Pizza">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Special Pizza</h4>
+                            <p>Loaded with premium toppings and extra cheese</p>
+                            <button class="btn btn-primary">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Food Categories -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" alt="Burger">
+                    <h4>Burgers</h4>
+                    <p>Juicy burgers with fresh ingredients</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500" alt="Pizza">
+                    <h4>Pizzas</h4>
+                    <p>Authentic Italian pizzas</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=500" alt="Pasta">
+                    <h4>Pasta</h4>
+                    <p>Delicious pasta dishes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

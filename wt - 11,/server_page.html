@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodExpress - Server Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #ff4757;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .menu-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .price {
+            color: #ff4757;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .order-btn {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .order-btn:hover {
+            background-color: #ff6b81;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>FoodExpress</h1>
+            <p>Delicious Food Delivered to Your Doorstep</p>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500" alt="Pizza">
+                <h3>Margherita Pizza</h3>
+                <p>Classic Italian pizza with fresh tomatoes and mozzarella</p>
+                <p class="price">$12.99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" alt="Burger">
+                <h3>Classic Burger</h3>
+                <p>Juicy beef patty with fresh vegetables</p>
+                <p class="price">$8.99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=500" alt="Pasta">
+                <h3>Spaghetti Carbonara</h3>
+                <p>Creamy pasta with bacon and parmesan</p>
+                <p class="price">$10.99</p>
+                <button class="order-btn">Order Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click event listeners to order buttons
+        document.querySelectorAll('.order-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const itemName = this.parentElement.querySelector('h3').textContent;
+                alert(`Order placed for ${itemName}!`);
+            });
+        });
+    </script>
+</body>
+</html> 

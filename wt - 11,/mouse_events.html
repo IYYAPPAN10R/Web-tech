@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodExpress - Mouse Events</title>
+    <style>
+        .food-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .food-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .food-card img {
+            max-width: 300px;
+            border-radius: 4px;
+        }
+        #event-log {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center">FoodExpress - Interactive Menu</h1>
+    <p class="text-center">Try interacting with the food items below!</p>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="food-card" 
+                     onmouseover="logEvent('mouseover', 'Pizza')"
+                     onmouseout="logEvent('mouseout', 'Pizza')"
+                     onclick="logEvent('click', 'Pizza')"
+                     ondblclick="logEvent('dblclick', 'Pizza')">
+                    <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500" alt="Pizza">
+                    <h3>Pizza</h3>
+                    <p>Hover over me!</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="food-card"
+                     onmouseover="logEvent('mouseover', 'Burger')"
+                     onmouseout="logEvent('mouseout', 'Burger')"
+                     onclick="logEvent('click', 'Burger')"
+                     ondblclick="logEvent('dblclick', 'Burger')">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500" alt="Burger">
+                    <h3>Burger</h3>
+                    <p>Click me!</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="food-card"
+                     onmouseover="logEvent('mouseover', 'Pasta')"
+                     onmouseout="logEvent('mouseout', 'Pasta')"
+                     onclick="logEvent('click', 'Pasta')"
+                     ondblclick="logEvent('dblclick', 'Pasta')">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=500" alt="Pasta">
+                    <h3>Pasta</h3>
+                    <p>Double click me!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="event-log">
+        <h4>Event Log:</h4>
+        <div id="log-content"></div>
+    </div>
+
+    <script>
+        function logEvent(eventType, item) {
+            const logContent = document.getElementById('log-content');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('p');
+            logEntry.textContent = `${timestamp} - ${eventType} on ${item}`;
+            logContent.insertBefore(logEntry, logContent.firstChild);
+        }
+
+        // Add mouse move event to the entire document
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            document.title = `Mouse Position: (${x}, ${y})`;
+        });
+    </script>
+</body>
+</html> 
