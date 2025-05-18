@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+            background-color: #1dc9b2;
+        }
+
+        .container {
+            width: 380px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            font-size: 14px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 6px;
+            font-size: 14px;
+            margin-top: 3px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            height: 30px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            height: 14px;
+            margin-right: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname">
+                <span class="error" id="fullnameError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username">
+                <span class="error" id="usernameError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email">
+                <span class="error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" placeholder="+91 9876543210">
+                <span class="error" id="phoneError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+                <span class="error" id="passwordError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" min="1940-01-01" max="2025-03-31">
+                <span class="error" id="dobError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span class="error" id="genderError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state">
+                <span class="error" id="stateError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <input type="text" id="district">
+                <span class="error" id="districtError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="taluk">Taluk</label>
+                <input type="text" id="taluk">
+                <span class="error" id="talukError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input type="text" id="pincode">
+                <span class="error" id="pincodeError"></span>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terms">
+                <label for="terms">I agree to the Terms & Conditions</label>
+                <span class="error" id="termsError"></span>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function (event) {
+            let isValid = true;
+
+            document.querySelectorAll(".error").forEach(el => el.textContent = "");
+
+            function showError(id, message) {
+                document.getElementById(id).textContent = message;
+                isValid = false;
+            }
+
+            let fields = [
+                { id: "fullname", message: "Full name is required!" },
+                { id: "username", message: "Pick a unique username!" },
+                { id: "email", message: "Email cannot be empty!" },
+                { id: "phone", message: "Enter a valid phone number!" },
+                { id: "password", message: "Password is required!" },
+                { id: "dob", message: "Please select your date of birth!" },
+                { id: "gender", message: "Please choose a gender!" },
+                { id: "state", message: "State is required!" },
+                { id: "district", message: "District is required!" },
+                { id: "taluk", message: "Taluk is required!" },
+                { id: "pincode", message: "Enter your area’s Pincode!" }
+            ];
+
+            fields.forEach(field => {
+                let value = document.getElementById(field.id).value.trim();
+                if (value === "") {
+                    showError(field.id + "Error", field.message);
+                }
+            });
+
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let pincode = document.getElementById("pincode").value.trim();
+            let dob = document.getElementById("dob").value.trim();
+            let terms = document.getElementById("terms").checked;
+
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (email && !email.match(emailPattern)) {
+                showError("emailError", "Enter a valid email (e.g., example@mail.com)");
+            }
+
+            let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (password && !password.match(passwordPattern)) {
+                showError("passwordError", "Must have 8+ chars, 1 uppercase, 1 number, 1 special char.");
+            }
+
+            if (!terms) {
+                showError("termsError", "You must accept the terms!");
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            } else {
+                event.preventDefault();
+                alert("Registered Successfully!");
+                document.getElementById("registerForm").reset();
+            } 
+        });
+    </script>
+</body>
+
+</html>
